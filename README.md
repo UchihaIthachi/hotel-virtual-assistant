@@ -1,55 +1,128 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Virtual Hotel Assistant with 3D Animation and AI Chatbot
 
-## Getting Started
+This project implements a virtual assistant with 3D animation capabilities and an AI chatbot powered by Rasa. The assistant can process text input from users, generate audio responses using Eleven Labs for text-to-speech conversion, synchronize lip movements and facial expressions using Rhubarb, and animate responses using ThreeJS.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **3D Animation**: Utilizes ThreeJS to create immersive 3D animations for interactive user experiences.
+- **Natural Language Processing**: Integrates Rasa for understanding and generating responses based on user input.
+- **Text-to-Speech**: Converts generated text responses into audio using Eleven Labs.
+- **Lip Sync and Facial Expressions**: Achieves realistic lip sync and facial expressions using Rhubarb.
+- **Backend Processing**: Node.js backend processes user input, interfaces with Rasa, manages audio conversion, and synchronization processes.
+- **Communication Flow**: Frontend sends user queries to the backend, receives processed responses (text, audio, animation), and renders them for user interaction.
+
+## Technologies Used
+
+- **Frontend**: React with Next.js
+- **Backend**: Node.js
+- **Natural Language Processing**: Rasa
+- **Text-to-Speech**: Eleven Labs
+- **Audio Conversion**: FFmpeg
+- **Lip Sync**: Rhubarb
+
+## Setup Instructions
+
+1. **Clone Repository**:
+
+   ```bash
+   git clone <repository_url>
+   cd virtual-assistant
+   ```
+
+2. **Install Dependencies**:
+
+   ```bash
+   # Install frontend dependencies
+   cd frontend
+   npm install
+
+   # Install backend dependencies
+   cd ../backend
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+
+   - Set up necessary environment variables for Rasa, Eleven Labs, and any other API keys or configurations required.
+
+4. **Start Development Servers**:
+
+   ```bash
+   # Start frontend server (in the frontend directory)
+   npm start
+
+   # Start backend server (in the backend directory)
+   npm start
+   ```
+
+5. **Access the Application**:
+   - Open your browser and go to `http://localhost:3000` to view the frontend application.
+   - Backend server runs on `http://localhost:8000`.
+
+## Usage
+
+- **Development Mode**: Use `npm start` in both frontend and backend directories to run the development servers concurrently.
+- **Production Deployment**: Configure your servers and build processes accordingly for deploying the frontend and backend to production environments.
+
+## Makefile Commands
+
+Ensure you have Make installed (`sudo apt-get install make` on Linux).
+
+- **Install Dependencies**: `make install`
+- **Start Development Servers**: `make start`
+- **Start Frontend Server**: `make frontend`
+- **Start Backend Server**: `make backend`
+- **Clean Dependencies**: `make clean`
+- **Help**: `make help`
+
+## Performance Optimization with Next.js
+
+Using Next.js for the frontend offers several performance benefits:
+
+- **Automatic Code Splitting**: Next.js automatically splits your code into small chunks which are only loaded when needed, improving initial loading times.
+- **Server-side Rendering (SSR)**: SSR reduces time to first byte (TTFB) and provides faster page rendering, enhancing overall performance.
+- **Static Site Generation (SSG)**: For pages with static content, Next.js can generate HTML at build time, reducing server load and improving scalability.
+
+## Directory Structure
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
 hotel-virtual-assistant/
 ├── audios/
 ├── ffmpeg/
 ├── rhubarb/
 ├── rhubarb-win/
 ├── app/
-│ ├── layout.js
-│ └── page.jsx(or other main entry point)
+│   ├── layout.js
+│   └── page.jsx (or other main entry point)
 ├── components/
-│ ├── UI.jsx
-│ ├── Avatar.jsx
-│ └── Experience.jsx
+│   ├── UI.jsx
+│   ├── Avatar.jsx
+│   └── Experience.jsx
 ├── hooks/
-│ └── useChat.jsx
+│   └── useChat.jsx
 ├── pages/
-│ └── api/
-│ └── chat.js
-└── pakage.json
+│   ├── api/
+│   │   └── chat.js
+│   └── index.jsx (or other pages)
+├── public/
+│   ├── images/
+│   └── favicon.ico
+├── scripts/
+│   ├── build.js
+│   └── deploy.js
+├── styles/
+│   ├── globals.css
+│   └── theme.css
+├── .gitignore
+├── LICENSE
+├── README.md
+└── package.json
+```
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
