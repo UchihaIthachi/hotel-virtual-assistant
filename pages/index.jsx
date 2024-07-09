@@ -1,12 +1,15 @@
+// pages/index.js
 import { Canvas } from '@react-three/fiber';
 import { Loader } from '@react-three/drei';
 import { Leva } from 'leva';
 import Experience from '../components/Experience';
 import UI from '../components/UI';
 import { useEffect, useState } from 'react';
+import { useChat } from '../hooks/useChat';
 
 export default function Home() {
   const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+  const { chat, message, onMessagePlayed, loading, cameraZoomed, setCameraZoomed } = useChat();
 
   useEffect(() => {
     const handleResize = () => {
@@ -44,7 +47,6 @@ export default function Home() {
           <ambientLight intensity={0.5} />
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
           <pointLight position={[-10, -10, -10]} />
-
           <Experience />
         </Canvas>
       </div>
