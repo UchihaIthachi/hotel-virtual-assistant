@@ -16,25 +16,57 @@ import {
 import { useChat } from "../hooks/useChat";
 import  Avatar  from "./Avatar";
 
-const Pumpkin = (props) => {
+
+const Desk = (props) => {
   const { nodes, materials } = useGLTF(
-    "/models/pumpkin.glb"
+    "/models/desk2.glb"
   );
   return (
     <group {...props} dispose={null}>
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh_0.geometry}
-        material={nodes.mesh_0.material}
-        position={[1.0, 0.3, 0.0]}
-      />
+      <group position={[0, 0, 0]} rotation={[-Math.PI / 2,0, Math.PI]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.Object029_Object029_mtl_0.geometry}
+          material={materials.Object029_mtl}
+          position={[0, 0, 0]}
+          scale={0.00125}
+        />
+      </group>
     </group>
   );
 };
 
 useGLTF.preload(
-  "/models/pumpkin.glb"
+  "/models/desk2.glb"
+);
+
+const Back = (props) => {
+  const { nodes, materials } = useGLTF(
+    "/models/background.glb"
+  );
+  return (
+    <group {...props} dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]}>
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.dojo_mockup_mini_material_0.geometry}
+          material={materials.mini_material}
+        />
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.dojo_mockup_OH_Outline_Material_0.geometry}
+          material={materials.OH_Outline_Material}
+        />
+      </group>
+    </group>
+  );
+};
+
+useGLTF.preload(
+  "/models/background.glb"
 );
 
 const Dots = (props) => {
@@ -136,7 +168,8 @@ const Experience = () => {
       </Suspense>
       <Avatar />
       <Suspense>
-        <Pumpkin />
+        <Desk/>
+        <Back/>
       </Suspense>
       <ContactShadows opacity={0.7} />
     </>
